@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mom&Pop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="stylesheets/home-style.css">
+
+</head>
+<body>
+    <div id='topnav'>
+        <a href='index.html'>Mom&Pop</a>
+        <div id='topnav-right'>
+              <a href="login.html">Sign In| Register</a>
+              <a href="shoppingcart.html"><img src="images/cart.png" alt="cart"id="cart"></a>
+        </div>
+    </div>
+    <div id="search-section">
+        <h1>Search for your favorite book</h1>
+        <form name="register-form" method="post" action="search.html">
+            <input type="text" name="search-item" id="search-item" placeholder="Search..."/>
+            <input type="submit" name="search-submit" id="search-submit" value="Search"/>
+        </form>
+    </div>
+
+    <div class="books-section">
+        <div class="books-container">
+            <h2>Best Sellers</h2>
+             <div class="book-item">
+                <img class="book-image" alt="book-image" src="images/48laws.jpg">
+                <br><br>
+                <h5>The 48 laws of power</h5>
+                <h6>by Robert Greene</h6>
+                <h6>$35.00</h6>
+                <button class="addbutton">Add to Cart</button>
+                
+             </div>
+             <div class="book-item">
+                <img class="book-image" alt="book-image" src="images/7habits.jpg">
+                <br><br>
+                <h5>The 7 Habits of Highly Effective </h5>
+                <h6>by Stephen Covey</h6>
+                <h6>$25.00</h6>
+                <button class="addbutton">Add to Cart</button>
+                
+             </div>
+             <div class="book-item">
+                <img class="book-image" alt="book-image" src="images/strangers.jpg">
+                <br><br>
+                <h5>Talking to Strangers</h5>
+                <h6>by Malcom Gladwell</h6>
+                <h6>$37.00</h6>
+                <button class="addbutton">Add to Cart</button>
+                
+             </div>
+        </div>
+        <br>
+    </div>
+    <div class="categories-section">
+        <h2>Categories</h2><br>
+             <div class="category">
+                <div   onclick="location.href='search.html';" style="cursor: pointer;">
+                    <h4>Science</h4>
+                    <img src="images/science.jpg " alt="category">
+                </div>
+             </div>
+             <div class="category">
+                <div  onclick="location.href='search.html';" style="cursor: pointer;">
+                    <h4>Philosophy</h4>
+                    <img src="images/philosophy.jpg " alt="category">
+                </div>
+             </div>
+             <div class="category">
+                <div   onclick="location.href='search.html';" style="cursor: pointer;">
+                    <h4>History</h4>
+                    <img src="images/history.jpg " alt="category">
+                </div>
+             </div>
+             <div class="category">
+                <div onclick="location.href='search.html';" style="cursor: pointer;">
+                    <h4>Engineering</h4>
+                    <img src="images/engineering.jpg " alt="category">
+                </div>
+             </div>
+             <div class="category">
+                <div  onclick="location.href='search.html';" style="cursor: pointer;">
+                    <h4>Fiction</h4>
+                    <img src="images/fiction.jpg " alt="category">
+                </div>
+             </div>
+             <div class="category">
+                <div   onclick="location.href='search.html';" style="cursor: pointer;">
+                    <h4>Photography</h4>
+                    <img src="images/photography.jpeg " alt="category">
+                </div>
+             </div>
+             <div class="category">
+                <div   onclick="location.href='search.html';" style="cursor: pointer;">
+                    <h4>Cooking</h4>
+                    <img src="images/cooking.jpeg " alt="category">
+                </div>
+             </div>
+             <div class="category">
+                <div   onclick="location.href='search.html';" style="cursor: pointer;">
+                    <h4>Self Help</h4>
+                    <img src="images/selfhelp.jpg " alt="category">
+                </div>
+             </div>
+             <div class="category">
+                <div   onclick="location.href='search.html';" style="cursor: pointer;">
+                    <h4>Other</h4>
+                    <img src="images/other.jpg " alt="category">
+                </div>
+             </div>
+        
+    </div>
+    <div class="books-section">
+        <div class="books-container">
+            <h2>Most Popular</h2>
+             <div class="book-item">
+                <img class="book-image" alt="book-image" src="images/48laws.jpg">
+                <br><br>
+                <h5>The 48 laws of power</h5>
+                <h6>by Robert Greene</h6>
+                <h6>$35.00</h6>
+                <button class="addbutton">Add to Cart</button>
+                
+             </div>
+             <div class="book-item">
+                <img class="book-image" alt="book-image" src="images/7habits.jpg">
+                <br><br>
+                <h5>The 7 Habits of Highly Effective </h5>
+                <h6>by Stephen Covey</h6>
+                <h6>$25.00</h6>
+                <button class="addbutton">Add to Cart</button>
+                
+             </div>
+             <div class="book-item">
+                <img class="book-image" alt="book-image" src="images/strangers.jpg">
+                <br><br>
+                <h5>Talking to Strangers</h5>
+                <h6>by Malcom Gladwell</h6>
+                <h6>$37.00</h6>
+                <button class="addbutton">Add to Cart</button>
+                
+             </div>
+        </div>
+        <br>
+    </div>
+    <div id="about-section">
+        <div id="contact" class="about" onclick="location.href='contactus.html';" style="cursor: pointer;">
+            <img src="images/contact.png" alt="Contact Us"><br>
+            <h2>Contact US</h2>
+        </div>
+        <div id="shipping" class="about" onclick="location.href='shipping.html';" style="cursor: pointer;">
+            <img src="images/shipping.png" alt="Contact Us"><br>
+            <h2>Shipping and Returns</h2>
+        </div>
+
+    </div>
+
+    <div id="footer">
+        <div id="contact-info">
+            <h4>Contact us</h4>
+            <p>If you have questions about our products or any other questions, feel free to send us a message. We will get back to you as soon as possible. We will try to respond back within 24 hours.</p>
+            <h4>Mom&Pop</h4>
+            <h5>
+                4700 Keele St, Toronto, ON M3J 1P3<br><br>
+                416-123-4567<br><br>
+                Email: info@mom&pop.com<br>
+            </h5>
+        </div>
+        <div id="map">
+            <div class="mapouter"><div class="gmap_canvas"><iframe width="541" height="523" id="gmap_canvas" src="https://maps.google.com/maps?q=york%20university&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/nordvpn-coupon-code/"></a></div><style>.mapouter{position:relative;text-align:right;height:523px;width:541px;}.gmap_canvas {overflow:hidden;background:none!important;height:523px;width:541px;}</style></div>
+        </div>
+
+       
+    
+    </div>
+    <footer>
+        Copyright © 2020 Mom&Pop Bookstore - All Rights Reserved.
+    </footer>
+
+    
+    
+
+
+
+
+
+</body>
+</html>
