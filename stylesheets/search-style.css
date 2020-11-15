@@ -34,3 +34,26 @@ footer{
     float: left;
     border-radius: 5px;
 }
+.result{
+    border-top: 2px solid white;
+    overflow: hidden;
+    padding-bottom: 1%;
+}
+.result:hover{
+    background-color: mistyrose;
+    cursor: pointer;
+}
+.result img{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    float: left;
+    height: 100px;
+    width: 75px;
+}
+.result h5{
+    margin-top: 2%;
+    padding-left: 2%;
+    color: maroon;
+   
+}
