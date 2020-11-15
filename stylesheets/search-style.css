@@ -1,0 +1,36 @@
+body{
+    background-color: white;
+    overflow: hidden;
+}
+footer{
+    background-color: maroon;
+    width: 100%;
+    margin-left: 0%;
+    position: absolute;
+    bottom: 0;
+}
+#search-item{
+    width:86%;
+    margin: 0%;
+}
+#search-submit{
+    width:12%;
+    margin: 0%;
+    border: none;
+}
+
+#filter{
+    background-color: #f2f2f2;
+    margin: 1%;
+    width:20%;
+    height: 300px;
+    float: left;
+    border-radius: 5px;
+}
+#results{
+    background-color: #f2f2f2;
+    margin: 1%;
+    width: 75%;
+    float: left;
+    border-radius: 5px;
+}
