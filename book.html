@@ -44,14 +44,14 @@
            <form>
                 <h4 > Add a review</h4>
                 <div id="stars">
-                    <div class="star" id="star1" value="1" onmouseover="starhover(1)" onclick="starhover(1)" onmouseout="starleave(1)">&#9733;</div>
-                    <div class="star" id="star2" value="2" onmouseover="starhover(2)" onclick="starhover(2)" onmouseout="starleave(2)">&#9733;</div>
-                    <div class="star" id="star3" value="3" onmouseover="starhover(3)" onclick="starhover(3)" onmouseout="starleave(3)">&#9733;</div>
-                    <div class="star" id="star4" value="4" onmouseover="starhover(4)" onclick="starhover(4)" onmouseout="starleave(4)">&#9733;</div>
-                    <div class="star" id="star5" value="5" onmouseover="starhover(5)" onclick="starhover(5)" onmouseout="starleave(5)">&#9733;</div>
+                    <div class="star" id="star1" value="1" onmouseover="starhover(1)" onclick="starchange(1)" onmouseout="starleave(1)">&#9733;</div>
+                    <div class="star" id="star2" value="2" onmouseover="starhover(2)" onclick="starchange(2)" onmouseout="starleave(2)">&#9733;</div>
+                    <div class="star" id="star3" value="3" onmouseover="starhover(3)" onclick="starchange(3)" onmouseout="starleave(3)">&#9733;</div>
+                    <div class="star" id="star4" value="4" onmouseover="starhover(4)" onclick="starchange(4)" onmouseout="starleave(4)">&#9733;</div>
+                    <div class="star" id="star5" value="5" onmouseover="starhover(5)"  onclick="starchange(5)" onmouseout="starleave(5)">&#9733;</div>
                 </div><br><br>
                 <input type="hidden" id="star-value" name="star-value" value="1">
-                <textarea id="add-review" name="add-review" rows="4" cols="50" required>Add a review here</textarea>
+                <textarea id="add-review" name="add-review" rows="4" cols="50" required placeholder="Add a review here"></textarea>
                 <button id="review-button">Add Review</button>
         </form>
        </div>
@@ -78,6 +78,7 @@
 </html>
 
 <script>
+    var ischanged=false;
    function change(x){
        var q=document.getElementById("quantity").value;
        if(x==0) {
@@ -93,19 +94,33 @@
    }
 
    function starhover(x){
+    ischanged=false;
         var i;
         for (i = 1; i <=x; i++) { 
             var star="star"+i;
             document.getElementById(star).style.color="gold";
         }
         document.getElementById("star-value").value=x;
+        console.log("changing")
+   }
+   function starchange(x){
+       ischanged=true;
+        var i;
+        for (i = 1; i <=x; i++) { 
+            var star="star"+i;
+            document.getElementById(star).style.color="gold";
+        }
+        document.getElementById("star-value").value=x;
+        console.log("changing")
    }
    function starleave(x){
+       if (ischanged==false){
         var i;
         for (i = 1; i <=x; i++) { 
             var star="star"+i;
             document.getElementById(star).style.color="lightgray";
         }
         document.getElementById("star-value").value=x;
+    }
    }
 </script>
