@@ -4,7 +4,7 @@ This is a publicly accessed bookstore that anyone has the ability to review, mak
 
 ## Administrator
 
-Users with the correct authentication are able to view the most popular ten books. Also, they can select a month to view the orders purchases not that month.
+Users with the correct authentication are able to view the most popular ten books. Also, they can select a month to view the orders purchased during that month.
 
 ## Cloud Access 
 
