@@ -46,13 +46,13 @@ public class SignUp extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		String submit_register = request.getParameter("submit-register");
+		String submit_register = Filter.stripXSS(request.getParameter("submit-register"));
 		if(submit_register != null) {
-			String userName_register = request.getParameter("register-username");
-			String passWord_register = request.getParameter("register-password");
-			String firstName_register = request.getParameter("register-firstname");
-			String lastName_register = request.getParameter("register-lastname");
-			String Email_register = request.getParameter("register-email");
+			String userName_register = Filter.stripXSS(request.getParameter("register-username"));
+			String passWord_register = Filter.stripXSS(request.getParameter("register-password"));
+			String firstName_register = Filter.stripXSS(request.getParameter("register-firstname"));
+			String lastName_register = Filter.stripXSS(request.getParameter("register-lastname"));
+			String Email_register = Filter.stripXSS(request.getParameter("register-email"));
 			//System.out.println("userName_register is " + userName_register);
 			//System.out.println("passWord_register is " + passWord_register);
 			//System.out.println("firstName_register is " + firstName_register);

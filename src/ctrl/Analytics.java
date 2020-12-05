@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import model.BookStoreModel;
 import model.InputValidator;
 
@@ -70,10 +69,12 @@ public class Analytics extends HttpServlet {
 			
 			String enteredMonth = request.getParameter("enteredMonth");	
 			InputValidator myValidator = (InputValidator) this.getServletContext().getAttribute("inputValidator");
+			
 			try {
 				myValidator.validateMonth(enteredMonth);
 			} catch (Exception e1) {
 				request.getSession().setAttribute("inputError", e1.getMessage());
+				System.out.println("e1.getMessage()=" + e1.getMessage());
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
@@ -84,6 +85,9 @@ public class Analytics extends HttpServlet {
 				myValidator.validateYear(enteredMonth);
 			} catch (Exception e1) {
 				request.getSession().setAttribute("inputError", e1.getMessage());
+				System.out.println("e1.getMessage()=" + e1.getMessage());
+				
+
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
@@ -92,6 +96,8 @@ public class Analytics extends HttpServlet {
 				
 			System.out.println("enteredMonth=" + enteredMonth);
 			System.out.println("enteredYear=" + enteredYear);
+
+			
 
 			
 			String reportResult = null;
@@ -104,6 +110,23 @@ public class Analytics extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		BookStoreModel myBookModel;
+		try {
+			myBookModel = new BookStoreModel();
+			String topten= myBookModel.topTen();
+			request.getSession().setAttribute("topten", topten);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 		
 		
 		String target = "/Analytics.jspx";

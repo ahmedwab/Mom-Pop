@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import javax.xml.bind.DatatypeConverter;
 
 import bean.userBean;
 
@@ -39,9 +38,12 @@ public class userDao {
 //		stmt.setString(4, Password);
 //		stmt.setString(5, Email);
 //		stmt.setInt(6, permission);
-		String hashed_password = hash_password(Password);
 		//System.out.println("hashed Passowrd is " + hashed_password);
 		int result =stmt.executeUpdate();
+		
+		stmt.close();
+		 con.close();
+		
 		return result;
 	}
 	
@@ -70,6 +72,9 @@ public class userDao {
 				}
 			}
 		}
+		con.close();
+		r.close();
+		p.close();
 		
 		return result;
 	}
@@ -92,7 +97,9 @@ public class userDao {
 			}
 			
 			
-			
+			con.close();
+			r.close();
+			p.close();
 			return ub;
 		}
 	

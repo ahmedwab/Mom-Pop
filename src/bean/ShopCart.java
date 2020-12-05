@@ -1,12 +1,10 @@
 package bean;
 
-import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import dao.BookDAO;
 
 //(Dmitry)
 public class ShopCart {

@@ -12,8 +12,8 @@ import dao.BookDAO;
 import dao.SaleDAO;
 import model.BookStoreModel;
 
-@Path("products")
-public class Book {
+@Path("orders")
+public class Orders {
 	
 	@GET
 	@Path("/read/")
@@ -24,7 +24,7 @@ public class Book {
 	
 		BookStoreModel bookModel =  new BookStoreModel();
 		try {
-			result = bookModel.getListOfProductsJSON(bid);
+			result = bookModel.getOrdersByIdJSON(bid);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

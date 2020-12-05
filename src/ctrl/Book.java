@@ -2,14 +2,11 @@ package ctrl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
 
+import javax.naming.NamingException;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +17,7 @@ import javax.servlet.http.HttpSession;
 import bean.BookBean;
 import bean.ReviewBean;
 import bean.ShopCart;
-import dao.BookDAO;
-import dao.ReviewDAO;
+import model.BookStoreModel;
 
 /**
  * Servlet implementation class ShopCartServlet
@@ -29,6 +25,7 @@ import dao.ReviewDAO;
 @WebServlet("/Book")
 public class Book extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private BookStoreModel model;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -67,35 +64,36 @@ public class Book extends HttpServlet {
 		
 		
 		String id="0";
-		if(request.getParameter("id")!=null) {
-			id=request.getParameter("id");
+		if(	Filter.stripXSS(request.getParameter("id"))!=null) {
+			id=		Filter.stripXSS(request.getParameter("id"));
+
 		}
-		BookDAO bd;
 		String bookinfo="";
 		String user=(String) session.getAttribute("user");
-		ShopCart cart = (ShopCart) session.getAttribute("cart");
 		if(user==null)user="Anonymous";
 		if(id!="0") {
 		try {
-			bd = new BookDAO();
-			bb=bd.retriveBookInfoById(id);
+				model = new BookStoreModel();
+			
+			bb=model.retriveBookInfoById(id);
 			bookinfo+="            <h3 id=\"product-title\">"+bb.getBookTitle()+"</h3>\r\n"
 					+ "            <h5 id=\"product-author\">by "+bb.getAuthor()+"</h5><br/>\r\n"
 					+ "            <h4 id=\"product-category\">"+bb.getBookCategory()+"</h4><br/>\r\n"
-					+ "            <h4 id=\"product-category\">$"+bb.getBookPrice()+"</h4><br/>\r\n";  
+			+ "            <h4 id=\"product-category\">$"+bb.getBookPrice()+"</h4><br/>\r\n";  
+
 			
 		//adding to cart
-			if(request.getParameter("add")!=null)
+			if(Filter.stripXSS(request.getParameter("add"))!=null)
 			{
-				int quantity=Integer.parseInt(request.getParameter("quantity"));
-				BookBean b=bd.retriveBookInfoById(id);
+				int quantity=Integer.parseInt(Filter.stripXSS(request.getParameter("quantity")));
+				BookBean b=model.retriveBookInfoById(id);
 				for(int i=0;i<quantity;i++) {
 					sc.addBookToCart(b);
 				}
 									
 			}
 			
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException | NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -111,10 +109,10 @@ public class Book extends HttpServlet {
 		String reviews="";
 		ArrayList <ReviewBean> getReviewsArrayList=new ArrayList <ReviewBean>();
 		try {
-			ReviewDAO rd= new ReviewDAO();
+			
 			if(id!="0")
-			getReviewsArrayList=rd.getReviews(id);
-		} catch (ClassNotFoundException | SQLException e) {
+			getReviewsArrayList=model.getReviews(id);
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -132,8 +130,7 @@ public class Book extends HttpServlet {
 		
 		
 		
-		String num=request.getParameter("quantity");
-		System.out.println(sc);
+		
 		request.setAttribute("image", image);
 		request.setAttribute("bookinfo", bookinfo);
 		request.setAttribute("reviews", reviews);
@@ -145,17 +142,17 @@ public class Book extends HttpServlet {
 
 
 		// add reviews
-				 if(request.getParameter("submit-review")!=null)
+				 if(Filter.stripXSS(request.getParameter("submit-review"))!=null)
 						{
 							System.out.println("review will be added by "+user);
-							String text=request.getParameter("review");
+							String text=Filter.stripXSS(request.getParameter("review"));
 							int bid=Integer.parseInt(id);
 							
-								ReviewDAO rd;
 								try {
-									rd = new ReviewDAO();
-									rd.insert(bid, user, text);
-								} catch (ClassNotFoundException | NoSuchAlgorithmException | SQLException e) {
+									
+									model.insert(bid, user, text);
+
+								} catch (NoSuchAlgorithmException | SQLException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}

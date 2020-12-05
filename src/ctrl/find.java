@@ -1,14 +1,12 @@
 package ctrl;
 
 import java.io.IOException;
-import java.sql.Blob;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
 
+import javax.naming.NamingException;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import bean.BookBean;
 import bean.ShopCart;
-import dao.BookDAO;
+import model.BookStoreModel;
 
 /**
  * Servlet implementation class ShopCartServlet
@@ -26,6 +24,8 @@ import dao.BookDAO;
 @WebServlet("/find")
 public class find extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private BookStoreModel model;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -55,8 +55,8 @@ public class find extends HttpServlet {
 		
 		
 
-		String name = request.getParameter("search-item");
-		String category = request.getParameter("category");
+		String name = Filter.stripXSS(request.getParameter("search-item"));
+		String category = Filter.stripXSS(request.getParameter("category"));
 		ShopCart sc=(ShopCart) session.getAttribute("cart");
 		if (sc==null) {
 			sc=new ShopCart();
@@ -66,12 +66,11 @@ public class find extends HttpServlet {
 		String search_result="";
 		
 		try {
-			BookDAO bd=new BookDAO();
-			ArrayList<BookBean>bb=bd.findBooks(name, category);
+			model = new BookStoreModel();
+			ArrayList<BookBean>bb=model.findBooks(name, category);
 			
 			for(BookBean b: bb) {
 				int id= b.getBookId();
-				String cat=b.getBookCategory();
 				String title=b.getBookTitle();
 				String author=b.getAuthor();
 				String image="images/image"+id+".jpg";
@@ -86,7 +85,7 @@ public class find extends HttpServlet {
 						
 				
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException | NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

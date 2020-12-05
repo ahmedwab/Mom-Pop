@@ -47,7 +47,6 @@ public class ShopCartServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
 		
-		int cartSize=0;
 
 
 		
@@ -76,11 +75,14 @@ public class ShopCartServlet extends HttpServlet {
 		if (cart.getCartSize() > 0) {
 			session.setAttribute("hasItems", true);
 		}
+		if (session.getAttribute("user")!=null) {
+			session.setAttribute("loggedin", true);
+		}
 		
 		//===========Remove Book from a cart ===================
 		if (request.getParameter("removeItem") != null) {
 			//Book that need to be removed:
-			String bid = request.getParameter("removeItem");
+			String bid = Filter.stripXSS(request.getParameter("removeItem"));
 			System.out.println("bid to be removed = " +bid);
 			cart.removeBookByBid(bid);
 			System.out.println("after rem cart = " + cart.toString());
@@ -93,7 +95,7 @@ public class ShopCartServlet extends HttpServlet {
 		
 		//===========Increase Qty of a book by 1 ===================
 		if (request.getParameter("increaseQty") != null) {
-			String bid = request.getParameter("increaseQty");
+			String bid = Filter.stripXSS(request.getParameter("increaseQty"));
 			System.out.println("bid to be increase qty = " +bid);
 			cart.increaseBookQty(bid);
 			System.out.println("after incr qty cart = " + cart.toString());
@@ -102,7 +104,7 @@ public class ShopCartServlet extends HttpServlet {
 		
 		//===========Decrease Qty of a book by 1 ===================
 		if (request.getParameter("decreaseQty") != null) {
-			String bid = request.getParameter("decreaseQty");
+			String bid = Filter.stripXSS(request.getParameter("decreaseQty"));
 			System.out.println("bid to be decrease  qty = " +bid);
 			cart.decreaseBookQty(bid);
 			System.out.println("after decrease qty cart = " + cart.toString());
@@ -112,26 +114,17 @@ public class ShopCartServlet extends HttpServlet {
 		}
 		
 		session.setAttribute("items", cart.getCartSize());
-		cartSize = cart.getCartSize();
 		//====================================================
 		}
 		
-		if(request.getParameter("checkoutguest-submit")!=null && cartSize>0) {
-			request.getRequestDispatcher("CheckOut").forward(request, response); 
-		}
-		else if(request.getParameter("checkout-submit")!=null  && cartSize>0) {
-			if(session.getAttribute("user")!=null)
-				request.getRequestDispatcher("CheckOut").forward(request, response); 
-			else
-				request.getRequestDispatcher("Login?page=CheckOut").forward(request, response); 
-		}
+		
 		
 
 
-		else {
+		
 		String target = "/ShoppingCart.jspx";
 		request.getRequestDispatcher(target).forward(request, response); 
-		}
+		
 		
 		
 

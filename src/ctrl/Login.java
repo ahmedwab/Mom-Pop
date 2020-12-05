@@ -40,7 +40,7 @@ public class Login extends HttpServlet {
 		String error="";
 		int login = 0;
 		
-		String page= request.getParameter("page");
+		String page= Filter.stripXSS(request.getParameter("page"));
 		
 		String user=(String) session.getAttribute("user");
 		//if logged in, log out
@@ -55,7 +55,7 @@ public class Login extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String submit_login = request.getParameter("submit-login");
+		String submit_login = Filter.stripXSS(request.getParameter("submit-login"));
 		if (submit_login != null)
 		{
 			String userName_login = request.getParameter("login-username");
