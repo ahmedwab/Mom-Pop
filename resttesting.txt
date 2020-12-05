@@ -1,0 +1,44 @@
+Rest Testing:
+
+
+Input and Output are as follows
+
+
+Orders REST 
+http://localhost:8080/BookStore/api/orders/read?bid=1
+{[ orderID: 13bookID: 1 quantity: 1 price: 37 ]}
+
+http://localhost:8080/BookStore/api/orders/read?bid=3
+{[ orderID: 13bookID: 3 quantity: 2 price: 37 ]}
+
+
+Poduct REST
+http://localhost:8080/BookStore/api/products/read?bid=1
+{bid: 1 author: The 48 Laws of Power title: Robert Greene category: Self help price: 37 }
+
+http://localhost:8080/BookStore/api/products/read?bid=2
+{bid: 2 author: Stephen Covey title: The 7 Habits of Highly Effective category: Self help price: 25 }
+
+http://localhost:8080/BookStore/api/products/read?bid=3
+{bid: 3 author: Malcom Cadwell title: Talking to Strangers category: Self help price: 37 }
+
+http://localhost:8080/BookStore/api/products/read?bid=4
+{bid: 4 author: David J. Griffiths title: Introduction to Electrodynamicss category: science price: 32 }
+
+http://localhost:8080/BookStore/api/products/read?bid=5
+{bid: 5 author: Discourse on Methods title: RenÃ© Descartes category: philosophy price: 26 }
+
+http://localhost:8080/BookStore/api/products/read?bid=6
+{bid: 6 author: Yuval Noah Harari title: Sapiens: A Brief History of Humankind category: history price: 31 }
+
+http://localhost:8080/BookStore/api/products/read?bid=7
+{bid: 7 author: Samuel C. Florman title: The existential pleasures of engineering category: engineering price: 42 }
+
+http://localhost:8080/BookStore/api/products/read?bid=8
+{bid: 8 author: George Orwell title: Nineteen Eighty-Four category: fiction price: 25 }
+
+http://localhost:8080/BookStore/api/products/read?bid=9
+{bid: 9 author: Understanding exposure title: Bryan Peterson category: photography price: 32 }
+
+http://localhost:8080/BookStore/api/products/read?bid=10
+{bid: 10 author: Gordon Ramsay title: Ultimate Fit Food category: cooking price: 29 }
