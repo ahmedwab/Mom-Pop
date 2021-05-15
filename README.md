@@ -2,6 +2,8 @@
 
 This is a publicly accessed bookstore that anyone has the ability to review, make purchases, or sign up to.
 
+<img src="mom&pop.jpg" alt="preview">
+
 ## Administrator
 
 Users with the correct authentication are able to view the most popular ten books. Also, they can select a month to view the orders purchased during that month.
